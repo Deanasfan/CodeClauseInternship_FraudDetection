@@ -24,6 +24,11 @@ plt.xlabel('Class')
 plt.ylabel('Count')
 plt.show()
 
+(The x-axis represents the two classes: 0 (non-fraudulent) and 1 (fraudulent).
+ The y-axis represents the count of transactions in each class.
+ This visualization helps you understand the imbalance in your data.
+ Typically, you'll see far fewer fraudulent transactions compared to non-fraudulent ones.)
+
 # Handle imbalanced dataset using SMOTE
 sm = SMOTE(random_state=42)
 X_res, y_res = sm.fit_resample(X, y)
@@ -52,10 +57,20 @@ plt.xlabel('Predicted')
 plt.ylabel('Actual')
 plt.show()
 
+(True Negatives (TN): Top-left cell (correctly predicted non-fraud).
+False Positives (FP): Top-right cell (incorrectly predicted fraud).
+False Negatives (FN): Bottom-left cell (incorrectly predicted non-fraud).
+True Positives (TP): Bottom-right cell (correctly predicted fraud). )
+
 # Visualize feature importance
 feature_importance = pd.Series(model.feature_importances_, index=X.columns)
 plt.figure(figsize=(10, 6))
 feature_importance.nlargest(10).plot(kind='barh')
 plt.title('Top 10 Feature Importance')
 plt.show()
+
+( The y-axis lists the top 10 features.
+ The x-axis shows the importance scores assigned to these features by the model.
+ Higher values indicate that the feature is more important for the model in making decisions.
+ This helps in understanding which features are most influential in predicting fraudulent transactions. )
 
